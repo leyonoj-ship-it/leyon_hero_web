@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Interaction Feed | Citizens & Leon</title>
+    <meta name="description"
+        content="Official community portal to interact with superhero Leon and fellow citizens. Post sightings, questions, upload photos, and see verified replies from Leon.">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💬</text></svg>">
+</head>
+
+<body>
+    <div class="bg-grid"></div>
+
+    <!-- Global Header / Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="/index.html" class="brand-link">
+                <div class="brand-crest">
+                    <img src="/assets/images/leon_portrait.jpg" alt="Leon Archangel Crest"
+                        onerror="this.outerHTML='<span class=\'brand-crest-fallback\'>🛡️</span>'">
+                </div>
+                <div class="brand-text">
+                    <h1>LEON</h1>
+                    <div class="brand-subtitle">Citizen Community Feed</div>
+                </div>
+            </a>
+
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/index.html" class="nav-link"><span>🏛️</span> Home Hub</a></li>
+                    <li><a href="/dashboard.html" class="nav-link" style="color:#00f0ff;"><span>🛰️</span> 3D
+                            Dashboard</a></li>
+                    <li><a href="/emergency.html" class="nav-link nav-emergency"><span>🚨</span> Emergency SOS</a></li>
+                    <li><a href="/interaction.html" class="nav-link active"><span>💬</span> Community Feed</a></li>
+                    <li><a href="/origin.html" class="nav-link"><span>📖</span> Origin Lore</a></li>
+                    <li><a href="/admin.html" class="nav-link" style="color:var(--gold);"><span>🛡️</span> Admin Map</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <div class="status-pill"
+                    style="border-color:rgba(0,163,255,0.4); background:rgba(0,163,255,0.1); color:#7dd3fc;">
+                    <div class="status-dot" style="background:var(--blue); box-shadow:0 0 10px var(--blue);"></div>
+                    <span>FORUM STREAM: LIVE</span>
+                </div>
+
+                <button class="admin-mode-pill" id="adminModeToggle"
+                    title="Toggle between Citizen View and Leon (Admin) View">
+                    👤 Mode: <strong>Citizen</strong>
+                </button>
+
+                <button class="btn-icon" id="audioToggleBtn" title="Toggle Tactical Audio Effects">
+                    🔊
+                </button>
+
+                <button class="hamburger-menu-btn" id="globalHamburgerBtn" aria-label="Open Navigation Drawer"
+                    title="Traverse Sections">
+                    <span class="hamburger-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                    <span class="hamburger-label">MENU</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Community Page Content -->
+    <main class="container community-page">
+        <div class="community-header">
+            <div class="hero-pill"
+                style="border-color:rgba(0,163,255,0.3); background:rgba(0,163,255,0.08); margin-bottom:1rem;">
+                <span style="color:var(--blue-light);">💬</span>
+                <span class="mono" style="color:var(--blue-light); font-size:0.8rem; letter-spacing:0.12em;">PUBLIC
+                    CITIZEN INTERACTION NEXUS</span>
+            </div>
+            <h2 class="font-display"
+                style="font-size:clamp(2rem, 4vw, 3rem); color:var(--white); margin-bottom:0.75rem;">
+                Citizen Network & <span class="text-gold">Hero Dialogue</span>
+            </h2>
+            <p style="color:var(--text-muted); max-width:680px; margin:0 auto;">
+                Share eyewitness reports, ask questions publicly to Leon, and upload field photos. Official responses
+                from Leon are highlighted with verified angelic gold emblems.
+            </p>
+        </div>
+
+        <!-- Community Layout: Feed (Left) & Info Sidebar (Right) -->
+        <div class="community-layout">
+
+            <!-- LEFT: Post Publisher & Scrolling Stream -->
+            <section>
+
+                <!-- Post Creation Card -->
+                <div class="create-post-card" id="createPostCard">
+                    <div class="create-post-header">
+                        <div class="author-meta-inputs">
+                            <input type="text" id="postAuthorInput" class="form-input-sm" style="flex:1;"
+                                placeholder="Your Name or Citizen Alias (e.g. Sarah Connor)">
+                            <select id="postTagSelect" class="form-input-sm" style="width:160px; cursor:pointer;">
+                                <option value="Sighting">✨ Hero Sighting</option>
+                                <option value="Question to Leon">❓ Ask Leon</option>
+                                <option value="Rescue Report">🛡️ Rescue Report</option>
+                                <option value="Community Notice">📢 Community Notice</option>
+                                <option value="Lore & Theory">📖 Lore & Theory</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Post Content Textarea -->
+                    <textarea id="postContentInput" class="post-textarea"
+                        placeholder="What did you witness or what would you like to ask Leon publicly? Drop a field report..."></textarea>
+
+                    <!-- Uploaded Photo Preview Container -->
+                    <div class="image-preview-container" id="imagePreviewContainer">
+                        <img id="imagePreviewTarget" src="" alt="Selected Image Preview">
+                        <button class="btn-remove-preview" id="removeImageBtn" title="Remove image">✕</button>
+                    </div>
+
+                    <!-- Actions Bar: Photo Upload Trigger & Submit Button -->
+                    <div class="create-post-actions">
+                        <div>
+                            <label for="postImageInput" class="upload-file-trigger" title="Upload a field photograph">
+                                <span>📷</span>
+                                <span>Upload Field Photo</span>
+                            </label>
+                            <input type="file" id="postImageInput" class="hidden-file-input" accept="image/*">
+                        </div>
+
+                        <button class="btn btn-blue" id="publishPostBtn">
+                            <span>Publish to Feed</span>
+                            <span>➔</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Scrolling Community Feed Stream -->
+                <div class="feed-stream" id="feedStreamContainer">
+                    <!-- Posts and nested comments dynamically rendered by interaction.js -->
+                </div>
+
+            </section>
+
+            <!-- RIGHT: Community Guidelines & Verified Hero Notice -->
+            <aside class="community-sidebar">
+
+                <!-- Verified Hero Notice Card -->
+                <div class="sidebar-card"
+                    style="border-color:rgba(245,215,127,0.3); background:linear-gradient(180deg, rgba(245,215,127,0.06), rgba(14,18,26,0.85));">
+                    <h3 class="sidebar-title" style="color:var(--gold);">
+                        <span>🛡️</span> Verified Hero Presence
+                    </h3>
+                    <p style="font-size:0.88rem; color:#e2e8f0; line-height:1.5; margin-bottom:1rem;">
+                        Leon actively reviews this public transmission channel between patrols. Any comment with a
+                        <strong>glowing gold border</strong> and the <span class="verified-badge-wings">ARCH-SENTINEL
+                            (VERIFIED)</span> badge is an authenticated directive from Leon.
+                    </p>
+                    <div style="font-size:0.75rem; color:var(--text-dim); font-family:'JetBrains Mono',monospace;">
+                        TRANSMISSION FREQUENCY: 144.900 GHz
+                    </div>
+                </div>
+
+                <!-- Admin Tester Mode Explainer -->
+                <div class="sidebar-card">
+                    <h3 class="sidebar-title">
+                        <span>⚙️</span> Interactive Admin Switch
+                    </h3>
+                    <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.5; margin-bottom:1rem;">
+                        Use the <strong>"Mode"</strong> pill in the navigation bar to toggle between posting as an
+                        everyday <em>Citizen</em> and posting verified decrees as <em>Leon (Admin)</em> to test
+                        responses!
+                    </p>
+                </div>
+
+                <!-- Community Guidelines -->
+                <div class="sidebar-card">
+                    <h3 class="sidebar-title">
+                        <span>📜</span> Citizen Guidelines
+                    </h3>
+                    <ul class="guidelines-list">
+                        <li>
+                            <span>🚨</span>
+                            <span>Do not use this feed for life-threatening peril — use the <strong>Emergency
+                                    SOS</strong> tab for immediate rescue dispatch.</span>
+                        </li>
+                        <li>
+                            <span>📷</span>
+                            <span>Photographs must be authentic field sightings to aid orbital threat tracking.</span>
+                        </li>
+                        <li>
+                            <span>🕊️</span>
+                            <span>Treat fellow citizens with solidarity and respect under the Aegis.</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </aside>
+
+        </div>
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-crest">🛡️ ✨ ⚔️</div>
+            <div class="footer-quote">
+                "United we stand, guarded under the celestial light."
+            </div>
+            <div class="footer-meta">
+                © 2026 Leon Arch-Sentinel Public Defense Command. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="/config.js"></script>
+    <script src="/js/shared.js"></script>
+    <script src="/js/interaction.js"></script>
+</body>
+
+</html>

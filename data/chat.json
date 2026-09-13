@@ -1,0 +1,126 @@
+[
+  {
+    "id": "msg-1",
+    "sender": "Leon",
+    "role": "admin",
+    "avatar": "/assets/images/leon_portrait.jpg",
+    "timestamp": "18:25:00",
+    "isLeon": true,
+    "priority": "system",
+    "content": "ARCH-SENTINEL QUANTUM UPLINK ACTIVE. Distress channels are monitored 24/7 across all planetary sectors. If you are in immediate peril, broadcast your coordinates and situation. I am listening."
+  },
+  {
+    "id": "msg-2",
+    "sender": "Citizen #4092",
+    "role": "citizen",
+    "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80",
+    "timestamp": "18:29:12",
+    "isLeon": false,
+    "priority": "HIGH",
+    "content": "Emergency in Sector 7 metro station! Unidentified rogue meta-human collapsed the north tunnel ceiling! We are trapped under debris with 15 people!"
+  },
+  {
+    "id": "msg-3",
+    "sender": "Leon",
+    "role": "admin",
+    "avatar": "/assets/images/leon_portrait.jpg",
+    "timestamp": "18:29:16",
+    "isLeon": true,
+    "priority": "TACTICAL_RESPONSE",
+    "content": "Coordinates pinpointed. Telekinesis field deployed to suspend falling rubble. Tunnel integrity reinforced. Rescue teams are breaching now. Stay calm and breathe easy — you are safe."
+  },
+  {
+    "id": "msg-1789219983935-da6b09",
+    "sender": "Citizen in Sector 7",
+    "role": "citizen",
+    "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80",
+    "timestamp": "07:03:03 pm",
+    "isLeon": false,
+    "priority": "HIGH",
+    "content": "A rogue metahuman is attacking near the bridge! Need assistance!",
+    "coords": {
+      "latitude": 9.9136,
+      "longitude": 76.2652,
+      "accuracy": 100000,
+      "altitude": "Ground Level",
+      "acquired": true
+    }
+  },
+  {
+    "id": "msg-1789219985232-c18495",
+    "sender": "Leon",
+    "role": "admin",
+    "avatar": "/assets/images/leon_portrait.jpg",
+    "timestamp": "07:03:05 pm",
+    "isLeon": true,
+    "priority": "TACTICAL_RESPONSE",
+    "content": "Hostile threat designated Code-Red. I am touching down between you and the aggressor right now. Justice is at hand."
+  },
+  {
+    "id": "msg-1789221662350-f680f1",
+    "sender": "Leon",
+    "role": "admin",
+    "avatar": "/assets/images/leon_portrait.jpg",
+    "timestamp": "07:31:02 pm",
+    "isLeon": true,
+    "priority": "TACTICAL_RESPONSE",
+    "content": "⚡ DIRECTIVE FOR SECTOR 4 — BAY BRIDGE NORTH PIER: Dispatched LIGHT SPEED INTERCEPT. Coordinates locked at [40.7282, -73.9942]. Divine aegis descending in 2 seconds."
+  },
+  {
+    "id": "msg-1789221714802-ff458b",
+    "sender": "Leon",
+    "role": "admin",
+    "avatar": "/assets/images/leon_portrait.jpg",
+    "timestamp": "07:31:54 pm",
+    "isLeon": true,
+    "priority": "TACTICAL_RESPONSE",
+    "content": "⚡ DIRECTIVE FOR SECTOR 9 — INDUSTRIAL REFINERY COMPLEX: Dispatched LIGHT SPEED INTERCEPT. Coordinates locked at [40.7061, -74.0090]. Divine aegis descending in 2 seconds."
+  },
+  {
+    "id": "msg-1789221761265-791e1f",
+    "sender": "Leon",
+    "role": "admin",
+    "avatar": "/assets/images/leon_portrait.jpg",
+    "timestamp": "07:32:41 pm",
+    "isLeon": true,
+    "priority": "TACTICAL_RESPONSE",
+    "content": "⚡ DIRECTIVE FOR SECTOR 9 — INDUSTRIAL REFINERY COMPLEX: Dispatched CELESTIAL AEGIS SHIELD. Coordinates locked at [40.7061, -74.0090]. Divine aegis descending in 2 seconds."
+  },
+  {
+    "id": "msg-1789267898332-069125",
+    "sender": "Leon",
+    "role": "citizen",
+    "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80",
+    "timestamp": "08:21:38 am",
+    "isLeon": false,
+    "priority": "TACTICAL_RESPONSE",
+    "content": "Leon, rogue metahuman sighted near city center! Request immediate defense barrier!",
+    "coords": {
+      "latitude": 40.7128,
+      "longitude": -74.006,
+      "accuracy": 15,
+      "altitude": "84m MSL",
+      "acquired": false
+    }
+  },
+  {
+    "id": "msg-1789267899589-4ecb77",
+    "sender": "Leon",
+    "role": "admin",
+    "avatar": "/assets/images/leon_portrait.jpg",
+    "timestamp": "08:21:39 am",
+    "isLeon": true,
+    "priority": "TACTICAL_RESPONSE",
+    "content": "Hostile threat designated Code-Red. I am touching down between you and the aggressor right now. Justice is at hand."
+  },
+  {
+    "id": "msg-1789268323734-47eea1",
+    "sender": "Leon",
+    "role": "admin",
+    "avatar": "/assets/images/leon_portrait.jpg",
+    "timestamp": "08:28:43 am",
+    "isLeon": true,
+    "priority": "TACTICAL_RESPONSE",
+    "content": "⚡ DIRECTIVE FOR SECTOR 4 — BAY BRIDGE NORTH PIER: Dispatched LIGHT SPEED INTERCEPT. Coordinates locked at [40.7282, -73.9942]. Divine aegis descending in 2 seconds."
+  }
+]

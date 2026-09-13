@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Lore & Origin of Leon | The Arch-Sentinel</title>
+  <meta name="description" content="Discover the chronicle of The Awakening of Leon, an archangel warrior sent to eradicate evil. Explore his 9 divine powers with RPG stat cards and mission statement.">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>">
+</head>
+<body>
+  <div class="bg-grid"></div>
+
+  <!-- Global Header / Navbar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="/index.html" class="brand-link">
+        <div class="brand-crest">
+          <img src="/assets/images/leon_portrait.jpg" alt="Leon Archangel Crest" onerror="this.outerHTML='<span class=\'brand-crest-fallback\'>🛡️</span>'">
+        </div>
+        <div class="brand-text">
+          <h1>LEON</h1>
+          <div class="brand-subtitle">The Arch-Sentinel Lore</div>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/index.html" class="nav-link"><span>🏛️</span> Home Hub</a></li>
+          <li><a href="/dashboard.html" class="nav-link" style="color:#00f0ff;"><span>🛰️</span> 3D Dashboard</a></li>
+          <li><a href="/emergency.html" class="nav-link nav-emergency"><span>🚨</span> Emergency SOS</a></li>
+          <li><a href="/interaction.html" class="nav-link"><span>💬</span> Community Feed</a></li>
+          <li><a href="/origin.html" class="nav-link active"><span>📖</span> Origin Lore</a></li>
+          <li><a href="/admin.html" class="nav-link" style="color:var(--gold);"><span>🛡️</span> Admin Map</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="status-pill" style="border-color:rgba(245,215,127,0.4); background:rgba(245,215,127,0.1); color:var(--gold-light);">
+          <div class="status-dot" style="background:var(--gold); box-shadow:0 0 10px var(--gold);"></div>
+          <span>ARCHIVAL CODEX: UNLOCKED</span>
+        </div>
+
+        <button class="admin-mode-pill" id="adminModeToggle" title="Toggle between Citizen View and Leon (Admin) View">
+          👤 Mode: <strong>Citizen</strong>
+        </button>
+
+        <button class="btn-icon" id="audioToggleBtn" title="Toggle Tactical Audio Effects">
+          🔊
+        </button>
+
+        <button class="hamburger-menu-btn" id="globalHamburgerBtn" aria-label="Open Navigation Drawer" title="Traverse Sections">
+          <span class="hamburger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+          <span class="hamburger-label">MENU</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Origin Lore Main Container -->
+  <main class="container origin-page">
+    
+    <!-- Hero Showcase: Cinematic Portrait & Core Mission Statement -->
+    <div class="origin-hero">
+      
+      <!-- Hyper-Realistic Cinematic Portrait of Leon -->
+      <div class="portrait-frame" id="heroPortraitContainer">
+        <img src="/assets/images/leon_portrait.jpg" alt="Leon the Archangel Warrior in Radiant Armor with Wings" id="leonPortraitImg">
+        <div class="portrait-halo-effect"></div>
+      </div>
+
+      <!-- Intro & Mission Statement -->
+      <div class="origin-intro">
+        <div class="origin-tag">
+          <span>✨</span> CHRONICLE OF THE ARCH-SENTINEL
+        </div>
+
+        <h1 class="origin-heading font-display">
+          The Living Aegis: <br>
+          <span class="text-gold-gradient">Leon the Archangel</span>
+        </h1>
+
+        <p style="font-size:1.1rem; color:#cbd5e1; line-height:1.7;">
+          From a kind-hearted eighteen-year-old carrying the solemn memory of his sister to the chosen descendant of Azazel, the Archangel of War — Leon wields divine light to shield the innocent.
+        </p>
+
+        <!-- Prominently Highlighted Core Mission Statement -->
+        <div class="mission-statement-card">
+          <div class="mission-quote-mark">“</div>
+          <div class="mission-quote-text">
+            To eradicate evil and forge a safer world for humanity and every living species.
+          </div>
+          <div class="mission-author">
+            — Leon's Ultimate Mission & Sacred Vow
+          </div>
+        </div>
+
+        <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:0.5rem;">
+          <a href="#powersGridSection" class="btn btn-gold">
+            <span>⚡ Explore Divine Powers</span>
+            <span>↓</span>
+          </a>
+          <a href="#awakeningStorySection" class="btn btn-glass">
+            <span>📜 Read The Awakening</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- The Awakening of Leon Prose Section -->
+    <section class="story-prose-section" id="awakeningStorySection">
+      <div class="origin-tag" style="margin: 0 auto 1.5rem; display:flex;">
+        <span>📜</span> SACRED CHRONICLE
+      </div>
+      <h2 class="story-prose-title font-display">
+        The Awakening of <span class="text-gold">Leon</span>
+      </h2>
+
+      <!-- Chapter I: The Vow in Childhood -->
+      <article class="story-chapter">
+        <div class="story-chapter-number">Chapter I</div>
+        <h3 class="story-chapter-heading font-display">A Solemn Oath in the Shadows</h3>
+        <div class="story-chapter-body">
+          <p>
+            <span class="drop-cap">L</span>eon, a kind-hearted eighteen-year-old, knew the bitterness of the world all too well. The tragic murder of his older sister during his childhood had scarred him deeply, but rather than giving in to despair, he swore a solemn oath to make the world a better place.
+          </p>
+        </div>
+      </article>
+
+      <!-- Chapter II: The Park & The Mysterious Old Man -->
+      <article class="story-chapter">
+        <div class="story-chapter-number">Chapter II</div>
+        <h3 class="story-chapter-heading font-display">The Intervention</h3>
+        <div class="story-chapter-body">
+          <p>
+            One day, while walking near a park, Leon witnessed a group of bullies harassing a young girl. Without a second thought, he intervened. Outnumbered and outmatched, he was beaten mercilessly and left severely injured on the ground. As he lay there, a mysterious old man appeared from the shadows, crouching beside him.
+          </p>
+          <blockquote style="border-left: 3px solid var(--gold); padding: 0.75rem 1.25rem; margin: 1.25rem 0; background: rgba(245,215,127,0.06); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-family:'Cinzel', serif;">
+            <p style="margin-bottom:0.5rem; color:var(--text-muted); font-size:1.05rem;">
+              <em>"What is it that you want?"</em> the old man asked.
+            </p>
+            <p style="margin-bottom:0; color:var(--gold-light); font-size:1.1rem; font-weight:700;">
+              <em>"Power,"</em> Leon replied, his voice strained but resolute. <em>"The power to make this world a better place."</em>
+            </p>
+          </blockquote>
+        </div>
+      </article>
+
+      <!-- Chapter III: The Ancient Cave of Azazel -->
+      <article class="story-chapter">
+        <div class="story-chapter-number">Chapter III</div>
+        <h3 class="story-chapter-heading font-display">The Blade of the Archangel of War</h3>
+        <div class="story-chapter-body">
+          <p>
+            The old man helped him up and guided him to a hidden, ancient cave. In the center of the cavern, a magnificent sword was embedded deep within a solid rock. The man explained that the blade once belonged to <strong>Azazel, the Archangel of War</strong>, and that it was sealed away by divine magic. Only a true descendant of the archangel could pull it from the stone.
+          </p>
+          <blockquote style="border-left: 3px solid var(--blue); padding: 0.75rem 1.25rem; margin: 1.25rem 0; background: rgba(0,163,255,0.06); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;">
+            <p style="margin-bottom:0.5rem; color:#cbd5e1;">
+              <em>"So, how do we find the descendant?"</em> Leon asked.
+            </p>
+            <p style="margin-bottom:0; color:#38bdf8; font-weight:700;">
+              The old man smiled. <em>"We already did. You are the chosen one."</em>
+            </p>
+          </blockquote>
+          <p>
+            With those words, he vanished into thin air.
+          </p>
+        </div>
+      </article>
+
+      <!-- Chapter IV: The Awakening -->
+      <article class="story-chapter" style="border: 1.5px solid rgba(245,215,127,0.4); box-shadow: 0 10px 40px rgba(0,0,0,0.8), 0 0 30px rgba(245,215,127,0.15);">
+        <div class="story-chapter-number" style="color:var(--gold);">Chapter IV · The Transformation</div>
+        <h3 class="story-chapter-heading font-display" style="color:var(--gold-light);">The Golden Awakening</h3>
+        <div class="story-chapter-body">
+          <p>
+            Leon stepped forward and reached for the hilt. Upon his first touch, a violent shockwave threw him backward to the ground. Refusing to yield, he stood up again. Fighting through agonizing pain and sheer willpower, his fingers wrapped around the sword.
+          </p>
+          <p>
+            With a mighty battle cry, he ripped the blade from the stone. In a blinding flash of golden light, his body began to change, awakening his true angelic heritage.
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <!-- LEON'S DIVINE ABILITIES (ORGANIZED BY CANONICAL CATEGORIES) -->
+    <section class="powers-section" id="powersGridSection">
+      <div class="powers-header">
+        <div class="origin-tag" style="margin: 0 auto 1rem;">
+          <span>⚔️</span> DIVINE INHERITANCE
+        </div>
+        <h2 class="font-display" style="font-size:clamp(2rem, 4vw, 3rem); color:var(--white); margin-bottom:1rem;">
+          Leon's <span class="text-gold">Divine Abilities</span>
+        </h2>
+        <p style="color:var(--text-muted); max-width:720px; margin:0 auto; font-size:1.05rem;">
+          Awakened through the sacred blade of Azazel, Leon wields four transcendent pillars of divine power.
+        </p>
+      </div>
+
+      <!-- Category Tabs / Filter -->
+      <div style="display:flex; justify-content:center; gap:10px; margin-bottom:3rem; flex-wrap:wrap;">
+        <button class="power-filter-btn active btn-preset" data-filter="all" style="padding:10px 20px;">All Divine Powers</button>
+        <button class="power-filter-btn btn-preset" data-filter="physical" style="padding:10px 20px;">💪 Physical Prowess</button>
+        <button class="power-filter-btn btn-preset" data-filter="spacetime" style="padding:10px 20px;">🌌 Space & Time</button>
+        <button class="power-filter-btn btn-preset" data-filter="mystical" style="padding:10px 20px;">🔮 Mystical Arts</button>
+        <button class="power-filter-btn btn-preset" data-filter="omniscience" style="padding:10px 20px;">👁️ Omniscience</button>
+      </div>
+
+      <!-- Powers Grid Structured into the 4 Canonical Domains -->
+      <div class="powers-grid">
+
+        <!-- PILLAR 1: PHYSICAL PROWESS (Superhuman Strength, Masterful Combat Skills, Flight via Majestic Wings) -->
+        
+        <!-- 1. Superhuman Strength -->
+        <div class="power-card" data-category="physical">
+          <div>
+            <div class="power-card-header">
+              <div class="power-icon">💪</div>
+              <span class="power-tier-badge">PHYSICAL PROWESS</span>
+            </div>
+            <h3 class="power-title font-display">Superhuman Strength</h3>
+            <div class="power-metric">Class-Omega Planetary Tier</div>
+            <p class="power-desc">
+              Immense physical output inherited from the Archangel of War. Capable of shattering reinforced adamantine barriers, physically lifting megaton debris, and withstanding catastrophic kinetic impacts.
+            </p>
+          </div>
+          <div class="power-meter-wrapper">
+            <div class="power-meter-labels">
+              <span>PHYSICAL FORCE HARMONICS</span>
+              <span>100%</span>
+            </div>
+            <div class="power-meter-bar">
+              <div class="power-meter-fill" data-width="100%" style="width:0%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Masterful Combat Skills -->
+        <div class="power-card" data-category="physical">
+          <div>
+            <div class="power-card-header">
+              <div class="power-icon">⚔️</div>
+              <span class="power-tier-badge">PHYSICAL PROWESS</span>
+            </div>
+            <h3 class="power-title font-display">Masterful Combat Skills</h3>
+            <div class="power-metric">Millennia-Old Archangel Martial Mastery</div>
+            <p class="power-desc">
+              Flawless instinctive mastery of the Blade of Azazel and hand-to-hand angelic martial forms, neutralizing hostile adversaries with precision and eliminating collateral harm.
+            </p>
+          </div>
+          <div class="power-meter-wrapper">
+            <div class="power-meter-labels">
+              <span>MARTIAL COMBAT MASTERY</span>
+              <span>100%</span>
+            </div>
+            <div class="power-meter-bar">
+              <div class="power-meter-fill" data-width="100%" style="width:0%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Flight via Majestic Wings -->
+        <div class="power-card" data-category="physical">
+          <div>
+            <div class="power-card-header">
+              <div class="power-icon">🪽</div>
+              <span class="power-tier-badge">PHYSICAL PROWESS</span>
+            </div>
+            <h3 class="power-title font-display">Flight via Majestic Wings</h3>
+            <div class="power-metric">Atmospheric & Trans-Orbital Flight</div>
+            <p class="power-desc">
+              Luminous angelic wings of sacred gold and pure white feathers that generate gravitational lift, allowing effortless trans-orbital soaring, mid-air aerial maneuvers, and planetary patrols.
+            </p>
+          </div>
+          <div class="power-meter-wrapper">
+            <div class="power-meter-labels">
+              <span>AERODYNAMIC CELESTIAL LIFT</span>
+              <span>98%</span>
+            </div>
+            <div class="power-meter-bar">
+              <div class="power-meter-fill" data-width="98%" style="width:0%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PILLAR 2: SPACE & TIME (Instant Teleportation, Movement Speed Far Exceeding Light) -->
+
+        <!-- 4. Instant Teleportation -->
+        <div class="power-card" data-category="spacetime">
+          <div>
+            <div class="power-card-header">
+              <div class="power-icon">✨</div>
+              <span class="power-tier-badge">SPACE & TIME</span>
+            </div>
+            <h3 class="power-title font-display">Instant Teleportation</h3>
+            <div class="power-metric">Zero-Latency Spatial Folding</div>
+            <p class="power-desc">
+              Bends the dimensional fabric of spacetime to shift instantly from orbital vantage points directly to coordinates in danger, bypassing physical walls, forcefields, and containment locks.
+            </p>
+          </div>
+          <div class="power-meter-wrapper">
+            <div class="power-meter-labels">
+              <span>SPATIAL FOLD EFFICIENCY</span>
+              <span>97%</span>
+            </div>
+            <div class="power-meter-bar">
+              <div class="power-meter-fill" data-width="97%" style="width:0%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Movement Speed Exceeding Light -->
+        <div class="power-card" data-category="spacetime">
+          <div>
+            <div class="power-card-header">
+              <div class="power-icon">💫</div>
+              <span class="power-tier-badge">SPACE & TIME</span>
+            </div>
+            <h3 class="power-title font-display">Superluminal Velocity</h3>
+            <div class="power-metric">> c (Far Exceeds Light-Speed)</div>
+            <p class="power-desc">
+              Kinetic acceleration that outpaces the speed of light. Allows Leon to intercept supersonic projectiles, extract citizens before explosion fronts expand, and traverse planetary distances in picoseconds.
+            </p>
+          </div>
+          <div class="power-meter-wrapper">
+            <div class="power-meter-labels">
+              <span>SUPERLUMINAL VELOCITY</span>
+              <span>100%</span>
+            </div>
+            <div class="power-meter-bar">
+              <div class="power-meter-fill" data-width="100%" style="width:0%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PILLAR 3: MYSTICAL ARTS (Telekinesis, Rare Magic of Creation) -->
+
+        <!-- 6. Telekinesis -->
+        <div class="power-card" data-category="mystical">
+          <div>
+            <div class="power-card-header">
+              <div class="power-icon">🌀</div>
+              <span class="power-tier-badge">MYSTICAL ARTS</span>
+            </div>
+            <h3 class="power-title font-display">Telekinesis</h3>
+            <div class="power-metric">Psychic & Gravitational Manipulation</div>
+            <p class="power-desc">
+              Direct mental control over the physical world. Able to halt collapsing bridges mid-fall, weightlessly suspend crumbling concrete over survivors, and deflect hostile kinetic fire with thought alone.
+            </p>
+          </div>
+          <div class="power-meter-wrapper">
+            <div class="power-meter-labels">
+              <span>PSYCHIC FORCE MAGNITUDE</span>
+              <span>96%</span>
+            </div>
+            <div class="power-meter-bar">
+              <div class="power-meter-fill" data-width="96%" style="width:0%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Rare Magic of Creation -->
+        <div class="power-card" data-category="mystical">
+          <div>
+            <div class="power-card-header">
+              <div class="power-icon">🔮</div>
+              <span class="power-tier-badge">MYSTICAL ARTS</span>
+            </div>
+            <h3 class="power-title font-display">Magic of Creation</h3>
+            <div class="power-metric">Sacred Matter & Energy Synthesis</div>
+            <p class="power-desc">
+              A rare, primordial art that synthesizes solid radiant light barriers, constructs protective domes over endangered citizens, and cleanses corrupted, toxic environments with divine restoration.
+            </p>
+          </div>
+          <div class="power-meter-wrapper">
+            <div class="power-meter-labels">
+              <span>CREATION SYNTHESIS POTENTIAL</span>
+              <span>99%</span>
+            </div>
+            <div class="power-meter-bar">
+              <div class="power-meter-fill" data-width="99%" style="width:0%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PILLAR 4: OMNISCIENCE (Complete Knowledge of the World, Flawless Lie Detection, Innate Danger-Sense) -->
+
+        <!-- 8. Complete Knowledge of the World -->
+        <div class="power-card" data-category="omniscience">
+          <div>
+            <div class="power-card-header">
+              <div class="power-icon">🌐</div>
+              <span class="power-tier-badge">OMNISCIENCE</span>
+            </div>
+            <h3 class="power-title font-display">Global Omniscience</h3>
+            <div class="power-metric">Complete Knowledge of the World</div>
+            <p class="power-desc">
+              An all-encompassing cognitive awareness spanning the globe. Leon perceives geopolitical tensions, environmental fluctuations, hidden hazards, and the history of every corner of the Earth.
+            </p>
+          </div>
+          <div class="power-meter-wrapper">
+            <div class="power-meter-labels">
+              <span>COGNITIVE COVERAGE</span>
+              <span>100%</span>
+            </div>
+            <div class="power-meter-bar">
+              <div class="power-meter-fill" data-width="100%" style="width:0%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. Flawless Lie Detection -->
+        <div class="power-card" data-category="omniscience">
+          <div>
+            <div class="power-card-header">
+              <div class="power-icon">⚖️</div>
+              <span class="power-tier-badge">OMNISCIENCE</span>
+            </div>
+            <h3 class="power-title font-display">Flawless Lie Detection</h3>
+            <div class="power-metric">Divine Discernment & Truth Sense</div>
+            <p class="power-desc">
+              Purity of perception that senses dishonesty, deception, and false testimonies immediately through biometric heart harmonics, voice micro-tremors, and spiritual intent.
+            </p>
+          </div>
+          <div class="power-meter-wrapper">
+            <div class="power-meter-labels">
+              <span>TRUTH DISCERNMENT ACCURACY</span>
+              <span>100%</span>
+            </div>
+            <div class="power-meter-bar">
+              <div class="power-meter-fill" data-width="100%" style="width:0%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10. Innate Danger-Sense -->
+        <div class="power-card" data-category="omniscience">
+          <div>
+            <div class="power-card-header">
+              <div class="power-icon">⚡</div>
+              <span class="power-tier-badge">OMNISCIENCE</span>
+            </div>
+            <h3 class="power-title font-display">Innate Danger-Sense</h3>
+            <div class="power-metric">Pre-Cognitive Threat Detection</div>
+            <p class="power-desc">
+              Instinctive pre-cognitive tuning that warns Leon of threats to innocent mortals seconds before they materialize, allowing him to position defenses before a single drop of blood is shed.
+            </p>
+          </div>
+          <div class="power-meter-wrapper">
+            <div class="power-meter-labels">
+              <span>PRE-EMPTIVE ACQUISITION</span>
+              <span>100%</span>
+            </div>
+            <div class="power-meter-bar">
+              <div class="power-meter-fill" data-width="100%" style="width:0%;"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-crest">🛡️ ✨ ⚔️</div>
+      <div class="footer-quote">
+        "To eradicate evil and forge a safer world for humanity and every living species."
+      </div>
+      <div class="footer-meta">
+        © 2026 Leon Arch-Sentinel Public Defense Command. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="/config.js"></script>
+  <script src="/js/shared.js"></script>
+  <script src="/js/origin.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+[
+  {
+    "id": "sos-active-1",
+    "timestamp": "2026-09-12T19:02:15.000Z",
+    "latitude": 40.7282,
+    "longitude": -73.9942,
+    "accuracy": 8,
+    "sector": "Sector 4 — Bay Bridge North Pier",
+    "threatType": "Structural Collapse / Fire",
+    "urgency": "CRITICAL",
+    "status": "EN_ROUTE",
+    "citizenName": "Officer Reynolds",
+    "notes": "Suspension cable severed under storm surge. School bus dangling over water with 24 passengers!",
+    "dispatchedAt": "2026-09-13T02:58:43.731Z",
+    "dispatchDirective": "Archangel Leon airborne at relativistic velocity",
+    "eta": "1.8 seconds"
+  },
+  {
+    "id": "sos-active-2",
+    "timestamp": "2026-09-12T19:05:40.000Z",
+    "latitude": 40.7061,
+    "longitude": -74.009,
+    "accuracy": 15,
+    "sector": "Sector 9 — Industrial Refinery Complex",
+    "threatType": "Metahuman Threat",
+    "urgency": "CRITICAL",
+    "status": "EN_ROUTE",
+    "citizenName": "Station Chief Adams",
+    "notes": "Rogue thermo-kinetic metahuman rupturing fuel pressure conduits. Containment failure imminent.",
+    "dispatchedAt": "2026-09-12T14:02:41.263Z",
+    "dispatchDirective": "Archangel Leon airborne at relativistic velocity",
+    "eta": "1.8 seconds"
+  },
+  {
+    "id": "sos-active-3",
+    "timestamp": "2026-09-12T19:08:10.000Z",
+    "latitude": 40.7484,
+    "longitude": -73.9857,
+    "accuracy": 10,
+    "sector": "Sector 2 — Midtown Memorial Medical",
+    "threatType": "Immediate Life Threat",
+    "urgency": "HIGH",
+    "status": "ACTIVE_TRACKING",
+    "citizenName": "Dr. Clara Sterling",
+    "notes": "Grid surge damaged ICU life-support battery backups. 8 minutes of emergency power remaining."
+  },
+  {
+    "id": "sos-seed-1",
+    "timestamp": "2026-09-12T18:28:45.000Z",
+    "latitude": 40.7128,
+    "longitude": -74.006,
+    "accuracy": 12,
+    "sector": "Sector 7 Metro Station",
+    "threatType": "Metahuman Threat",
+    "urgency": "CRITICAL",
+    "status": "RESOLVED",
+    "citizenName": "Citizen #4092",
+    "notes": "Tunnel ceiling collapse averted by Leon's telekinesis field"
+  }
+]

@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arch-Sentinel Tactical Command Console | Leon Admin</title>
+  <meta name="description" content="Secure orbital command console for Leon. Real-time global distress beacon tracking, satellite radar, and tactical rescue dispatch.">
+
+  <!-- Leaflet Tactical Map CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+
+  <style>
+    /* Admin Tactical Console Specific Styles */
+    .admin-layout {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      height: calc(100vh - 74px);
+      overflow: hidden;
+    }
+
+    .admin-map-container {
+      position: relative;
+      height: 100%;
+      width: 100%;
+      background: #05070a;
+    }
+
+    #adminDistressMap {
+      width: 100%;
+      height: 100%;
+      background: #06090e;
+    }
+
+    /* Floating Tactical Top HUD */
+    .admin-hud-bar {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      right: 16px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      pointer-events: none;
+    }
+
+    .hud-chip {
+      pointer-events: auto;
+      background: rgba(8, 11, 18, 0.88);
+      border: 1px solid rgba(245, 215, 127, 0.35);
+      backdrop-filter: blur(16px);
+      padding: 8px 16px;
+      border-radius: var(--radius-full);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 15px var(--gold-glow);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.82rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--gold-light);
+    }
+
+    .hud-controls {
+      display: flex;
+      gap: 8px;
+      pointer-events: auto;
+    }
+
+    /* Distress Signals Side Panel */
+    .admin-side-panel {
+      background: rgba(10, 13, 20, 0.95);
+      border-left: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      backdrop-filter: blur(20px);
+      z-index: 50;
+    }
+
+    .panel-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(6, 8, 12, 0.7);
+    }
+
+    .panel-tab {
+      flex: 1;
+      padding: 12px 10px;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    .panel-tab.active {
+      color: var(--gold);
+      border-color: var(--gold);
+      background: rgba(245, 215, 127, 0.08);
+    }
+
+    /* Selected Beacon Mission Dossier */
+    .mission-dossier {
+      padding: 1.25rem;
+      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(18, 23, 34, 0.4);
+    }
+
+    .mission-title {
+      font-size: 1.05rem;
+      color: var(--white);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .mission-meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin: 10px 0;
+      font-size: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .mission-meta-item {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 6px 8px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .mission-notes-box {
+      background: rgba(255, 59, 48, 0.08);
+      border-left: 3px solid var(--crimson);
+      padding: 8px 12px;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.82rem;
+      color: #ff9d99;
+      margin-bottom: 1rem;
+      line-height: 1.4;
+    }
+
+    /* Tactical Action Buttons */
+    .tactical-dispatch-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .btn-dispatch {
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.84rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: var(--transition);
+      border: 1px solid transparent;
+    }
+
+    .btn-dispatch-intercept {
+      background: var(--gold-gradient);
+      color: #0c0e14;
+      box-shadow: 0 0 15px var(--gold-glow);
+    }
+
+    .btn-dispatch-intercept:hover {
+      box-shadow: 0 0 25px rgba(245, 215, 127, 0.5);
+      transform: translateY(-1px);
+    }
+
+    .btn-dispatch-shield {
+      background: rgba(0, 163, 255, 0.15);
+      border-color: var(--blue);
+      color: var(--blue-light);
+    }
+
+    .btn-dispatch-shield:hover {
+      background: rgba(0, 163, 255, 0.25);
+      box-shadow: 0 0 15px var(--blue-glow);
+    }
+
+    .btn-dispatch-resolve {
+      background: rgba(16, 185, 129, 0.15);
+      border-color: var(--success);
+      color: #6ee7b7;
+    }
+
+    .btn-dispatch-resolve:hover {
+      background: rgba(16, 185, 129, 0.25);
+      box-shadow: 0 0 15px var(--success-glow);
+    }
+
+    /* Beacon List */
+    .beacon-list-container {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .beacon-item-card {
+      background: rgba(18, 23, 34, 0.6);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 12px;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .beacon-item-card:hover {
+      border-color: rgba(245, 215, 127, 0.4);
+      background: rgba(26, 32, 48, 0.8);
+      transform: translateX(-2px);
+    }
+
+    .beacon-item-card.selected {
+      border-color: var(--gold);
+      background: rgba(245, 215, 127, 0.1);
+      box-shadow: 0 0 20px rgba(245, 215, 127, 0.15);
+    }
+
+    .beacon-item-card.beacon-critical {
+      border-left: 3.5px solid var(--crimson);
+    }
+
+    .beacon-item-card.beacon-high {
+      border-left: 3.5px solid var(--warning);
+    }
+
+    .beacon-item-card.beacon-resolved {
+      border-left: 3.5px solid var(--success);
+      opacity: 0.65;
+    }
+
+    .beacon-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 4px;
+    }
+
+    .beacon-card-sector {
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: var(--white);
+    }
+
+    .beacon-card-threat {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .beacon-card-footer {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.68rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-dim);
+    }
+
+    /* Auth Modal Overlay */
+    .admin-auth-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 7, 10, 0.92);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .admin-auth-box {
+      background: var(--bg-card);
+      border: 1.5px solid var(--gold);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      max-width: 440px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 35px var(--gold-glow);
+      animation: fadeInDown 0.4s ease-out;
+    }
+
+    .auth-crest {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      margin: 0 auto 1.25rem;
+      overflow: hidden;
+      box-shadow: 0 0 20px var(--gold-glow);
+    }
+
+    .auth-crest img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .auth-pass-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1.5px solid rgba(245, 215, 127, 0.4);
+      color: var(--gold-light);
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.1rem;
+      letter-spacing: 0.2em;
+      text-align: center;
+      outline: none;
+      margin: 1.25rem 0;
+      transition: var(--transition);
+    }
+
+    .auth-pass-input:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 20px var(--gold-glow);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .auth-pass-hint {
+      font-size: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-dim);
+      margin-bottom: 1.5rem;
+      cursor: pointer;
+    }
+
+    .auth-pass-hint:hover {
+      color: var(--gold);
+    }
+
+    @media (max-width: 900px) {
+      .admin-layout {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+      .admin-map-container {
+        height: 50vh;
+      }
+      .admin-side-panel {
+        height: 50vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+
+  <!-- AUTHENTICATION CHALLENGE MODAL -->
+  <div class="admin-auth-overlay" id="adminAuthModal" style="display:none;">
+    <div class="admin-auth-box">
+      <div class="auth-crest">
+        <img src="/assets/images/leon_portrait.jpg" alt="Leon Archangel Crest">
+      </div>
+      <div class="hero-pill" style="margin-bottom:0.75rem;">
+        <span>🔒</span>
+        <span class="mono">QUANTUM ACCESS CLEARANCE</span>
+      </div>
+      <h2 class="font-display" style="font-size:1.5rem; color:var(--white); margin-bottom:0.5rem;">
+        Arch-Sentinel Authentication
+      </h2>
+      <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.5;">
+        Restricted Command Deck. Enter the sacred Archangel passphrase to inspect all active civilian distress signals and authorize light-speed rescues.
+      </p>
+
+      <form id="adminAuthForm" onsubmit="event.preventDefault(); submitAdminAuth();">
+        <input type="password" id="adminPasscodeInput" class="auth-pass-input" placeholder="PASSCODE" autocomplete="current-password" autofocus>
+        
+        <div class="auth-pass-hint" onclick="document.getElementById('adminPasscodeInput').value='AEGIS-777';">
+          🔑 Click here to load default key: <strong style="color:var(--gold);">AEGIS-777</strong>
+        </div>
+
+        <div style="display:flex; gap:10px;">
+          <a href="/index.html" class="btn btn-glass" style="flex:1;">Cancel</a>
+          <button type="submit" class="btn btn-gold" style="flex:1;">
+            <span>Authorize</span>
+            <span>➔</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- GLOBAL NAVBAR -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="/index.html" class="brand-link">
+        <div class="brand-crest">
+          <img src="/assets/images/leon_portrait.jpg" alt="Leon Archangel Crest">
+        </div>
+        <div class="brand-text">
+          <h1>LEON</h1>
+          <div class="brand-subtitle" style="color:var(--gold);">Arch-Sentinel Command Center</div>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/index.html" class="nav-link"><span>🏛️</span> Home Hub</a></li>
+          <li><a href="/dashboard.html" class="nav-link" style="color:#00f0ff;"><span>🛰️</span> 3D Dashboard</a></li>
+          <li><a href="/emergency.html" class="nav-link nav-emergency"><span>🚨</span> Emergency SOS</a></li>
+          <li><a href="/interaction.html" class="nav-link"><span>💬</span> Community Feed</a></li>
+          <li><a href="/origin.html" class="nav-link"><span>📖</span> Origin Lore</a></li>
+          <li><a href="/admin.html" class="nav-link active" style="color:var(--gold); border:1px solid var(--gold); background:rgba(245,215,127,0.1);"><span>🛡️</span> Admin Map</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="status-pill" style="border-color:var(--gold); background:rgba(245,215,127,0.1); color:var(--gold-light);">
+          <div class="status-dot" style="background:var(--gold); box-shadow:0 0 10px var(--gold);"></div>
+          <span id="activeSignalsCountLabel">SATELLITE RADAR: 3 ACTIVE</span>
+        </div>
+
+        <button class="btn btn-glass" style="padding:6px 14px; font-size:0.75rem;" onclick="logoutAdminSession()">
+          <span>🔒 Logout</span>
+        </button>
+
+        <button class="btn-icon" id="audioToggleBtn" title="Toggle Tactical Audio Effects">
+          🔊
+        </button>
+
+        <button class="hamburger-menu-btn" id="globalHamburgerBtn" aria-label="Open Navigation Drawer" title="Traverse Sections">
+          <span class="hamburger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+          <span class="hamburger-label">MENU</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN ADMIN CONSOLE LAYOUT -->
+  <div class="admin-layout" id="adminMainContent">
+
+    <!-- LEFT: Interactive Full Tactical Map of Broadcasted Distress Signals -->
+    <div class="admin-map-container">
+      
+      <!-- Tactical Floating HUD -->
+      <div class="admin-hud-bar">
+        <div class="hud-chip">
+          <span>🛰️</span>
+          <span>ORBITAL VIGIL: OMNISCIENCE GRID 360°</span>
+        </div>
+
+        <div class="hud-controls">
+          <button class="hud-chip" style="cursor:pointer;" onclick="recenterMapToAllBeacons()">
+            <span>🎯 Recenter All</span>
+          </button>
+          <button class="hud-chip" style="cursor:pointer;" onclick="fetchDistressBeacons()">
+            <span>🔄 Refresh Pings</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- The Leaflet Tactical Map Display -->
+      <div id="adminDistressMap"></div>
+    </div>
+
+    <!-- RIGHT: Selected Mission Dossier & Real-Time Distress Feed -->
+    <aside class="admin-side-panel">
+      
+      <!-- Mission Dossier (Active Selection) -->
+      <div class="mission-dossier" id="selectedMissionDossier">
+        <div class="mission-title">
+          <span id="dossierSectorName" class="font-display">Select Distress Beacon</span>
+          <span id="dossierUrgencyBadge" class="verified-badge-wings" style="background:var(--crimson); color:#fff; display:none;">CRITICAL</span>
+        </div>
+
+        <div class="mission-meta-grid" id="dossierMetaGrid" style="display:none;">
+          <div class="mission-meta-item">
+            <span style="color:var(--text-dim);">Coordinates</span><br>
+            <strong id="dossierCoords" style="color:var(--gold-light);">--</strong>
+          </div>
+          <div class="mission-meta-item">
+            <span style="color:var(--text-dim);">Threat</span><br>
+            <strong id="dossierThreatType" style="color:var(--white);">--</strong>
+          </div>
+          <div class="mission-meta-item">
+            <span style="color:var(--text-dim);">Caller</span><br>
+            <strong id="dossierCaller" style="color:var(--white);">--</strong>
+          </div>
+          <div class="mission-meta-item">
+            <span style="color:var(--text-dim);">Status</span><br>
+            <strong id="dossierStatus" style="color:var(--gold);">--</strong>
+          </div>
+        </div>
+
+        <div class="mission-notes-box" id="dossierNotesBox" style="display:none;">
+          <span id="dossierNotesText">Click on any glowing distress pulse on the map to inspect telemetry and dispatch a response.</span>
+        </div>
+
+        <!-- Tactical Dispatcher Controls -->
+        <div class="tactical-dispatch-grid" id="dossierActionsGrid" style="display:none;">
+          <button class="btn-dispatch btn-dispatch-intercept" onclick="dispatchActionToCurrentBeacon('LIGHT_SPEED_INTERCEPT')">
+            <span>⚡ Deploy Light-Speed Intercept</span>
+          </button>
+          <button class="btn-dispatch btn-dispatch-shield" onclick="dispatchActionToCurrentBeacon('CELESTIAL_AEGIS_SHIELD')">
+            <span>🔮 Deploy Celestial Shield</span>
+          </button>
+          <button class="btn-dispatch btn-dispatch-resolve" onclick="resolveCurrentBeacon()">
+            <span>✅ Mark Threat Neutralized</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="panel-tabs">
+        <button class="panel-tab active" data-filter="all" onclick="filterBeacons('all')">ALL PINGS</button>
+        <button class="panel-tab" data-filter="active" onclick="filterBeacons('active')">ACTIVE SOS</button>
+        <button class="panel-tab" data-filter="resolved" onclick="filterBeacons('resolved')">RESOLVED</button>
+      </div>
+
+      <!-- Live Broadcasted Signals List -->
+      <div class="beacon-list-container" id="beaconListContainer">
+        <!-- Dynamically filled by admin.js -->
+      </div>
+
+    </aside>
+
+  </div>
+
+  <!-- Leaflet JS Library -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="/config.js"></script>
+  <script src="/js/shared.js"></script>
+  <script src="/js/admin.js"></script>
+</body>
+</html>

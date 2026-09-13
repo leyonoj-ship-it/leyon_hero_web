@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emergency Distress Signal | Direct Line to Leon</title>
+  <meta name="description" content="Direct emergency quantum distress beacon to superhero Leon. Automatic geolocation acquisition and encrypted real-time chat.">
+  
+  <!-- Leaflet CSS for Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚨</text></svg>">
+</head>
+<body>
+  <div class="bg-grid"></div>
+
+  <!-- Global Header / Navbar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="/index.html" class="brand-link">
+        <div class="brand-crest">
+          <img src="/assets/images/leon_portrait.jpg" alt="Leon Archangel Crest" onerror="this.outerHTML='<span class=\'brand-crest-fallback\'>🛡️</span>'">
+        </div>
+        <div class="brand-text">
+          <h1>LEON</h1>
+          <div class="brand-subtitle">Emergency Distress Uplink</div>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/index.html" class="nav-link"><span>🏛️</span> Home Hub</a></li>
+          <li><a href="/dashboard.html" class="nav-link" style="color:var(--neon-cyan); text-shadow:0 0 10px rgba(0,240,255,0.4);"><span>🛰️</span> 3D Dashboard</a></li>
+          <li><a href="/emergency.html" class="nav-link active nav-emergency"><span>🚨</span> Emergency SOS</a></li>
+          <li><a href="/interaction.html" class="nav-link"><span>💬</span> Community Feed</a></li>
+          <li><a href="/origin.html" class="nav-link"><span>📖</span> Origin Lore</a></li>
+          <li><a href="/admin.html" class="nav-link" style="color:var(--gold);"><span>🛡️</span> Admin Map</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="status-pill" style="border-color:rgba(255,59,48,0.4); background:rgba(255,59,48,0.1); color:#ff9d99;">
+          <div class="status-dot" style="background:var(--crimson); box-shadow:0 0 10px var(--crimson);"></div>
+          <span>DISTRESS FREQUENCY ACTIVE</span>
+        </div>
+
+        <button class="admin-mode-pill" id="adminModeToggle" title="Toggle between Citizen View and Leon (Admin) View">
+          👤 Mode: <strong>Citizen</strong>
+        </button>
+
+        <button class="btn-icon" id="audioToggleBtn" title="Toggle Tactical Audio Effects">
+          🔊
+        </button>
+
+        <button class="hamburger-menu-btn" id="globalHamburgerBtn" aria-label="Open Navigation Drawer" title="Traverse Sections">
+          <span class="hamburger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+          <span class="hamburger-label">MENU</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Emergency Page Content -->
+  <main class="container emergency-page">
+    <div class="emergency-header">
+      <div class="urgent-badge" id="geoStatusBadge">
+        🚨 PRIORITY ONE: QUANTUM DISTRESS TRANSMITTER
+      </div>
+      <h2 class="emergency-title font-display">
+        Direct Distress Beacon to <span class="text-gold">Leon</span>
+      </h2>
+      <p class="emergency-subtitle">
+        Your browser has initiated orbital geolocation tracking. Transmit your coordinates and communicate directly with Leon through the encrypted tactical link below.
+      </p>
+
+      <!-- Quick Switch Banner to 3D Anti-Gravity Dashboard -->
+      <div style="margin-top: 1.2rem; display: flex; justify-content: center;">
+        <a href="/dashboard.html" class="btn" style="background: linear-gradient(135deg, rgba(0,240,255,0.15) 0%, rgba(0,240,255,0.05) 100%); border: 1.5px solid #00f0ff; color: #00f0ff; box-shadow: 0 0 20px rgba(0,240,255,0.3); text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; font-weight: 700; padding: 10px 22px; border-radius: 999px; display: inline-flex; align-items: center; gap: 0.65rem; transition: all 0.25s ease;">
+          <span>🛰️</span> Switch to 3D Anti-Gravity Holographic Dashboard ➔
+        </a>
+      </div>
+    </div>
+
+    <!-- Main Emergency Grid: Telemetry & Radar Map (Left) + Encrypted Chat (Right) -->
+    <div class="emergency-grid">
+
+      <!-- LEFT COLUMN: Location Tracker & Tactical Radar / Map -->
+      <section class="tactical-panel" aria-label="Tactical Geolocation Tracker">
+        <div class="panel-header">
+          <div class="panel-title">
+            <span>📡</span> ORBITAL GPS TELEMETRY
+          </div>
+          <span class="mono" style="font-size:0.75rem; color:var(--text-muted);" id="telemetrySector">
+            SECTOR SCANNING...
+          </span>
+        </div>
+
+        <!-- Telemetry Data Nodes -->
+        <div class="telemetry-bar">
+          <div class="telemetry-node">
+            <span class="telemetry-lbl">Latitude</span>
+            <span class="telemetry-val" id="telemetryLat">Acquiring...</span>
+          </div>
+          <div class="telemetry-node">
+            <span class="telemetry-lbl">Longitude</span>
+            <span class="telemetry-val" id="telemetryLon">Acquiring...</span>
+          </div>
+          <div class="telemetry-node">
+            <span class="telemetry-lbl">Accuracy Radius</span>
+            <span class="telemetry-val" id="telemetryAcc">Tracking...</span>
+          </div>
+        </div>
+
+        <!-- Radar & Tactical Map Display -->
+        <div class="radar-map-wrapper">
+          <div id="emergencyMap"></div>
+          
+          <!-- Tactical Radar Overlay -->
+          <div class="radar-overlay">
+            <div class="radar-sweep-beam"></div>
+            <div class="radar-target-reticle"></div>
+          </div>
+
+          <!-- Dynamic ETA Chip -->
+          <div class="radar-eta-chip" id="leonEtaCounter">
+            <span>⚡</span> Leon En Route — ETA: 3.4s
+          </div>
+        </div>
+
+        <!-- Distress Broadcast Controls -->
+        <div class="distress-controls">
+          <label style="font-size:0.75rem; font-family:'JetBrains Mono',monospace; color:var(--text-dim); text-transform:uppercase;">
+            Select Threat Classification:
+          </label>
+          <div class="distress-preset-buttons">
+            <button class="btn-preset active" data-threat="Immediate Life Threat">🚨 Life in Peril</button>
+            <button class="btn-preset" data-threat="Metahuman Threat">⚡ Rogue Metahuman</button>
+            <button class="btn-preset" data-threat="Structural Collapse / Fire">🔥 Structural / Fire</button>
+          </div>
+
+          <input type="text" id="distressNotesInput" class="form-input-sm" style="width:100%; padding:10px 14px; margin-top:4px;" placeholder="Optional: Specific building, floor, or hostage count...">
+
+          <button class="btn btn-crimson btn-sos-ping" id="broadcastSosBtn">
+            <span>🚨</span> BROADCAST SOS DISTRESS SIGNAL
+          </button>
+        </div>
+      </section>
+
+      <!-- RIGHT COLUMN: Direct Line to Admin (Leon) Encrypted Chat Interface -->
+      <section class="chat-panel" aria-label="Direct Encrypted Line to Leon">
+        <div class="chat-header">
+          <div class="chat-channel-info">
+            <div class="chat-avatar-leon">
+              <img src="/assets/images/leon_portrait.jpg" alt="Leon Arch-Sentinel">
+            </div>
+            <div>
+              <div class="chat-header-title font-display">
+                <span>Leon</span>
+                <span class="verified-badge-wings">🛡️ ADMIN</span>
+              </div>
+              <div class="chat-header-sub">
+                ARCHANGEL QUANTUM UPLINK · FREQUENCY 144.900 GHz
+              </div>
+            </div>
+          </div>
+          <div class="chat-encryption-badge">
+            🔒 CELESTIAL-256
+          </div>
+        </div>
+
+        <!-- Message Stream Area -->
+        <div class="chat-messages" id="chatMessagesStream">
+          <!-- Messages dynamically injected by emergency.js -->
+        </div>
+
+        <!-- Chat Input Bar -->
+        <div class="chat-input-wrapper">
+          <input type="text" class="chat-input" id="emergencyChatInput" placeholder="Describe your danger immediately to Leon..." autocomplete="off">
+          <button class="btn btn-gold btn-send-chat" id="sendChatBtn">
+            <span>Send</span>
+            <span>➔</span>
+          </button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-crest">🛡️ ✨ ⚔️</div>
+      <div class="footer-quote">
+        "Fear not, for I hear your call in the quiet and the tempest. Stand steadfast."
+      </div>
+      <div class="footer-meta">
+        © 2026 Leon Arch-Sentinel Public Defense Command. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Leaflet JS Library for Map -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="/config.js"></script>
+  <script src="/js/shared.js"></script>
+  <script src="/js/emergency.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "whitematrix-hero-web",
+  "version": "1.0.0",
+  "description": "Leon Arch-Sentinel Public Portal & Command Hub",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "superhero",
+    "leon",
+    "portal",
+    "emergency",
+    "command-hub"
+  ],
+  "author": "WhiteMatrix",
+  "license": "ISC"
+}

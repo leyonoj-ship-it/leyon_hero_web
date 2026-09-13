@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leon | Arch-Sentinel Public Portal & Command Hub</title>
+  <meta name="description" content="Official public portal for Leon the superhero. Send distress signals, interact with the community, and learn the lore of the Arch-Sentinel.">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+</head>
+<body>
+  <!-- Ambient Grid Overlay -->
+  <div class="bg-grid"></div>
+
+  <!-- Global Header / Navbar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="/index.html" class="brand-link" id="brandHomeLink">
+        <div class="brand-crest">
+          <img src="/assets/images/leon_portrait.jpg" alt="Leon Archangel Crest" onerror="this.outerHTML='<span class=\'brand-crest-fallback\'>🛡️</span>'">
+        </div>
+        <div class="brand-text">
+          <h1>LEON</h1>
+          <div class="brand-subtitle">Arch-Sentinel · Earth Aegis</div>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav>
+        <ul class="nav-links" id="mainNavLinks">
+          <li><a href="/index.html" class="nav-link active"><span>🏛️</span> Home Hub</a></li>
+          <li><a href="/dashboard.html" class="nav-link" style="color:#00f0ff;"><span>🛰️</span> 3D Dashboard</a></li>
+          <li><a href="/emergency.html" class="nav-link nav-emergency"><span>🚨</span> Emergency SOS</a></li>
+          <li><a href="/interaction.html" class="nav-link"><span>💬</span> Community Feed</a></li>
+          <li><a href="/origin.html" class="nav-link"><span>📖</span> Origin Lore</a></li>
+          <li><a href="/admin.html" class="nav-link" style="color:var(--gold);"><span>🛡️</span> Admin Map</a></li>
+        </ul>
+      </nav>
+
+      <!-- Status & Actions -->
+      <div class="nav-actions">
+        <div class="status-pill" title="Global Orbital Sentinel Status">
+          <div class="status-dot"></div>
+          <span>ORBITAL PATROL: ACTIVE</span>
+        </div>
+
+        <button class="admin-mode-pill" id="adminModeToggle" title="Toggle between Citizen View and Leon (Admin) View">
+          👤 Mode: <strong>Citizen</strong>
+        </button>
+
+        <button class="btn-icon" id="audioToggleBtn" title="Toggle Tactical Audio Effects">
+          🔊
+        </button>
+
+        <button class="hamburger-menu-btn" id="globalHamburgerBtn" aria-label="Open Navigation Drawer" title="Traverse Sections">
+          <span class="hamburger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+          <span class="hamburger-label">MENU</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main class="hero-wrapper">
+    <div class="hero-backdrop" id="heroBackdrop"></div>
+
+    <div class="hero-content">
+      <!-- High-Tech Badge -->
+      <div class="hero-pill">
+        <span class="hero-pill-icon">✨</span>
+        <span class="hero-pill-text">Arch-Sentinel Emergency & Public Uplink Active</span>
+      </div>
+
+      <!-- Prominent Centralized Question as specified -->
+      <h2 class="hero-question">
+        What type of emergency or what do you need at the current time?
+      </h2>
+
+      <!-- Subtitle -->
+      <p class="hero-subtitle">
+        Whether you face immediate mortal peril, seek public interaction with fellow citizens, or wish to explore the divine origins of Earth’s guardian — select your direct portal below.
+      </p>
+
+      <!-- The Three Large, Highly Visible & Distinct Action Buttons -->
+      <div class="hero-actions-grid">
+
+        <!-- 1. Emergency (Red/Urgent Styling) -->
+        <a href="/emergency.html" class="action-card action-emergency" id="btnEmergencyAction">
+          <div class="emergency-pulse-indicator">
+            <span class="emergency-beacon-dot"></span>
+            <span>HIGH PRIORITY</span>
+          </div>
+          <div>
+            <div class="action-icon-wrap">
+              🚨
+            </div>
+            <h3 class="action-title">Emergency</h3>
+            <p class="action-desc">
+              Transmit an immediate SOS distress beacon with automatic GPS coordinate tracking and an encrypted direct line to Leon.
+            </p>
+          </div>
+          <div class="action-btn-trigger">
+            <span>Broadcast Distress Signal</span>
+            <span>➔</span>
+          </div>
+        </a>
+
+        <!-- 2. Interaction (Blue/Community Styling) -->
+        <a href="/interaction.html" class="action-card action-interaction" id="btnInteractionAction">
+          <div>
+            <div class="action-icon-wrap">
+              💬
+            </div>
+            <h3 class="action-title">Interaction</h3>
+            <p class="action-desc">
+              Join the citizen community feed. Post field sightings, upload photos, share witness testimonies, and receive verified replies from Leon.
+            </p>
+          </div>
+          <div class="action-btn-trigger">
+            <span>Open Community Feed</span>
+            <span>➔</span>
+          </div>
+        </a>
+
+        <!-- 3. Origin Story (Gold/Mystical Styling) -->
+        <a href="/origin.html" class="action-card action-origin" id="btnOriginAction">
+          <div>
+            <div class="action-icon-wrap">
+              📖
+            </div>
+            <h3 class="action-title">Origin Story</h3>
+            <p class="action-desc">
+              Unveil the sacred chronicle of "The Awakening of Leon", inspect his 9 divine powers with RPG-style stat cards, and explore his eternal mission.
+            </p>
+          </div>
+          <div class="action-btn-trigger">
+            <span>Explore The Lore</span>
+            <span>➔</span>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- Live Defense Telemetry Strip -->
+      <div class="hero-stats-strip">
+        <div class="stat-item">
+          <span class="stat-item-label">Sentinel Status</span>
+          <span class="stat-item-val" style="color:#6ee7b7;">WATCHING OVER EARTH</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-item-label">Average Arrival Velocity</span>
+          <span class="stat-item-val" style="color:var(--gold);">LIGHT-SPEED (3.8s ETA)</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-item-label">Direct Line Encryption</span>
+          <span class="stat-item-val" style="color:#38bdf8;">CELESTIAL-256</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-crest">🛡️ ✨ ⚔️</div>
+      <div class="footer-quote">
+        "To eradicate evil and forge a safer world for humanity and every living species."
+      </div>
+      <div class="footer-meta">
+        © 2026 Leon Arch-Sentinel Public Defense Command. All rights reserved. Quantum frequency monitored 24/7.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/config.js"></script>
+  <script src="/js/shared.js"></script>
+  <script>
+    // Apply developer config if background photo is provided
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof CONFIG !== 'undefined' && CONFIG.bgPhotoUrl) {
+        const bg = document.getElementById('heroBackdrop');
+        if (bg) {
+          bg.style.backgroundImage = `url('${CONFIG.bgPhotoUrl}')`;
+          if (CONFIG.bgOverlayOpacity !== undefined) {
+            bg.style.opacity = 1 - CONFIG.bgOverlayOpacity;
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

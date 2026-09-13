@@ -1,0 +1,104 @@
+[
+  {
+    "id": "post-1",
+    "author": "Elena Vance",
+    "handle": "@elena_v",
+    "role": "citizen",
+    "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+    "timestamp": "12 minutes ago",
+    "tag": "Sighting",
+    "content": "Just saw a blinding golden streak crossing the night clouds above Sector 4 right before the thunder struck! The storm immediately dissipated. Did anyone else catch that?? He is truly out there watching over us.",
+    "image": "/assets/images/sample_post1.jpg",
+    "likes": 343,
+    "userLiked": true,
+    "comments": [
+      {
+        "id": "c-1",
+        "author": "Marcus Brody",
+        "role": "citizen",
+        "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80",
+        "timestamp": "9 minutes ago",
+        "content": "I felt the pressure wave in District 9! Total silence for 3 seconds, then a golden glow over the bay.",
+        "isLeon": false
+      },
+      {
+        "id": "c-2",
+        "author": "Leon",
+        "handle": "@ArchSentinel",
+        "role": "admin",
+        "avatar": "/assets/images/leon_portrait.jpg",
+        "timestamp": "4 minutes ago",
+        "content": "Sector 4 weather anomaly was neutralized. An atmospheric tear has been stabilized. Rest peacefully tonight, citizens. I remain aloft.",
+        "isLeon": true
+      },
+      {
+        "id": "c-1789220142420-def974",
+        "author": "Citizen",
+        "handle": "@citizen",
+        "role": "citizen",
+        "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80",
+        "timestamp": "Just now",
+        "content": "Thank you Leon for protecting Sector 4!",
+        "isLeon": false
+      }
+    ]
+  },
+  {
+    "id": "post-2",
+    "author": "Captain Rivera",
+    "handle": "@fd_rivera_station8",
+    "role": "emergency_services",
+    "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80",
+    "timestamp": "1 hour ago",
+    "tag": "Rescue Report",
+    "content": "Station 8 responding to the chemical plant fire downtown. Out of nowhere, a massive dome of golden celestial glyphs encapsulated the explosion, shielding the entire civilian perimeter. No casualties reported. Words cannot express our gratitude.",
+    "image": "/assets/images/sample_post2.jpg",
+    "likes": 890,
+    "userLiked": false,
+    "comments": [
+      {
+        "id": "c-3",
+        "author": "Leon",
+        "handle": "@ArchSentinel",
+        "role": "admin",
+        "avatar": "/assets/images/leon_portrait.jpg",
+        "timestamp": "45 minutes ago",
+        "content": "Honoring the bravery of First Responders. Your courage on the ground is what gives this world its strength. I am always by your side.",
+        "isLeon": true
+      },
+      {
+        "id": "c-4",
+        "author": "Aisha Khan",
+        "role": "citizen",
+        "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80",
+        "timestamp": "30 minutes ago",
+        "content": "My sister was in the apartment across the street. Thank you Leon for saving our city!",
+        "isLeon": false
+      }
+    ]
+  },
+  {
+    "id": "post-3",
+    "author": "Dr. Aris Thorne",
+    "handle": "@quantum_thorne",
+    "role": "scientist",
+    "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80",
+    "timestamp": "3 hours ago",
+    "tag": "Research & Lore",
+    "content": "Our orbital sensors picked up tachyon harmonic frequencies matching Leon's instant teleportation signature. The energy output is pure divine coherent light with zero radioactive fallout. An absolute marvel of creation magic and physics.",
+    "image": null,
+    "likes": 512,
+    "userLiked": false,
+    "comments": [
+      {
+        "id": "c-5",
+        "author": "Sora Takahashi",
+        "role": "student",
+        "avatar": "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80",
+        "timestamp": "2 hours ago",
+        "content": "Have you published the frequency spectrum yet? Studying his energy signatures for my meta-physics thesis!",
+        "isLeon": false
+      }
+    ]
+  }
+]

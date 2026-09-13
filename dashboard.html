@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anti-Gravity Sci-Fi Emergency Dashboard | Leon Command</title>
+  <meta name="description" content="Futuristic sci-fi emergency dashboard with anti-gravity weightless floating glassmorphism panels, upward glowing neon particles, and holographic 3D typography on different Z-axes.">
+  
+  <!-- Fonts & Global Stylesheets -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛰️</text></svg>">
+</head>
+<body class="dashboard-body">
+
+  <!-- Upward Anti-Gravity Neon Particle Canvas -->
+  <canvas id="antiGravityCanvas"></canvas>
+
+  <!-- Ambient Deep-Space Nebula Glow -->
+  <div class="deep-space-nebula"></div>
+
+  <!-- Global Header / Navbar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="/index.html" class="brand-link" id="brandHomeLink">
+        <div class="brand-crest">
+          <img src="/assets/images/leon_portrait.jpg" alt="Leon Archangel Crest" onerror="this.outerHTML='<span class=\'brand-crest-fallback\'>🛡️</span>'">
+        </div>
+        <div class="brand-text">
+          <h1>LEON</h1>
+          <div class="brand-subtitle">Anti-Gravity Orbital Aegis</div>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav>
+        <ul class="nav-links" id="mainNavLinks">
+          <li><a href="/index.html" class="nav-link"><span>🏛️</span> Home Hub</a></li>
+          <li><a href="/dashboard.html" class="nav-link active" style="color:var(--neon-cyan); text-shadow:0 0 10px var(--neon-cyan);"><span>🛰️</span> 3D Dashboard</a></li>
+          <li><a href="/emergency.html" class="nav-link nav-emergency"><span>🚨</span> Emergency SOS</a></li>
+          <li><a href="/interaction.html" class="nav-link"><span>💬</span> Community Feed</a></li>
+          <li><a href="/origin.html" class="nav-link"><span>📖</span> Origin Lore</a></li>
+          <li><a href="/admin.html" class="nav-link" style="color:var(--gold);"><span>🛡️</span> Admin Map</a></li>
+        </ul>
+      </nav>
+
+      <!-- Status & Actions -->
+      <div class="nav-actions">
+        <div class="status-pill" style="border-color:rgba(0,240,255,0.4); background:rgba(0,240,255,0.1); color:#94e3fe;">
+          <div class="status-dot" style="background:var(--neon-cyan); box-shadow:0 0 10px var(--neon-cyan);"></div>
+          <span>ZERO-G FIELD: SYNCHRONIZED</span>
+        </div>
+
+        <button class="admin-mode-pill" id="adminModeToggle" title="Toggle between Citizen View and Leon (Admin) View">
+          👤 Mode: <strong>Citizen</strong>
+        </button>
+
+        <button class="btn-icon" id="audioToggleBtn" title="Toggle Tactical Audio Effects">
+          🔊
+        </button>
+
+        <button class="hamburger-menu-btn" id="globalHamburgerBtn" aria-label="Open Navigation Drawer" title="Traverse Sections">
+          <span class="hamburger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+          <span class="hamburger-label">MENU</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Master Dashboard Viewport (3D Stage) -->
+  <main class="dashboard-viewport">
+    
+    <!-- Top HUD Control Strip: Perspective Switcher & Dossier Action -->
+    <div class="hud-control-strip">
+      <div class="hud-title-wrap">
+        <span class="hud-badge-pulse">● ZERO-GRAVITY UPLINK</span>
+        <h2>Orbital Telemetry & Anti-Gravity Command Center</h2>
+      </div>
+
+      <div class="hud-actions">
+        <!-- View Mode Switcher -->
+        <div class="view-mode-group" aria-label="Perspective Controls">
+          <button class="view-mode-btn active" data-mode="isometric" title="Angled 3D Isometric View (UE5 Render Match)">
+            <span>📐</span> Isometric
+          </button>
+          <button class="view-mode-btn" data-mode="free" title="Dynamic 3D Parallax Mouse Tilt">
+            <span>🌀</span> Free 3D
+          </button>
+          <button class="view-mode-btn" data-mode="flat" title="Flat Frontal Tactical HUD">
+            <span>🔲</span> Flat HUD
+          </button>
+        </div>
+
+        <!-- 8K UE5 Render Dossier Button -->
+        <button class="btn-ue5-dossier" id="btnOpenUe5Dossier" title="Inspect the 8K Unreal Engine 5 Design Render">
+          <span>🎨</span> 8K UE5 Render Dossier
+        </button>
+      </div>
+    </div>
+
+    <!-- 3D Orbital Space with Hovering Glassmorphism Panels -->
+    <div class="orbital-stage-wrapper">
+
+      <div class="orbital-stage mode-isometric" id="orbitalStage">
+
+        <!-- Glowing Orbital Halo Light Rings -->
+        <div class="orbital-halo-rings"></div>
+
+        <!-- ===================================================================
+             PANEL 1: PRIMARY HOLOGRAPHIC SLAB - "Emergency SOS" (Z-Axis: +110px)
+             =================================================================== -->
+        <section class="floating-panel panel-emergency-sos float-phase-1" id="panelSos" aria-label="Emergency SOS Command Slab">
+          <!-- 3D Extruded Glowing Holographic Text -->
+          <div class="hologram-title-3d">
+            <span>🚨</span> Emergency SOS
+          </div>
+          <div class="hologram-subtitle">
+            QUANTUM DISTRESS PULSE · HIGHEST Z-DEPTH (Z: +110px)
+          </div>
+
+          <div class="sos-status-line">
+            <span style="font-size:0.75rem; color:var(--text-muted); font-family:'JetBrains Mono',monospace;">BEACON STATUS:</span>
+            <span id="sosStatusVal" style="font-size:0.78rem; font-weight:700; color:#00f0ff; font-family:'JetBrains Mono',monospace;">STANDBY ACQUISITION</span>
+          </div>
+
+          <div class="sos-threat-picker">
+            <button class="btn-threat-chip active" data-threat="Immediate Life Threat">🚨 Life in Peril</button>
+            <button class="btn-threat-chip" data-threat="Rogue Metahuman">⚡ Rogue Meta</button>
+            <button class="btn-threat-chip" data-threat="Structural Fire">🔥 Structural Fire</button>
+            <button class="btn-threat-chip" data-threat="Planetary Threat">🌐 Cataclysm</button>
+          </div>
+
+          <button class="btn-broadcast-3d" id="btnBroadcastSos3D">
+            <span>🚨</span> Broadcast SOS Distress Pulse
+          </button>
+        </section>
+
+        <!-- ===================================================================
+             PANEL 2: SECONDARY HOLOGRAPHIC SLAB - "Home Hub" (Z-Axis: +70px)
+             =================================================================== -->
+        <section class="floating-panel panel-home-hub float-phase-2" id="panelHome" aria-label="Home Hub Command Slab">
+          <!-- 3D Extruded Celestial Glowing Holographic Text -->
+          <div class="hologram-home-title-3d">
+            <span>🏛️</span> Home Hub
+          </div>
+          <div class="hologram-subtitle" style="color:#fce7b2;">
+            CELESTIAL EARTH AEGIS · SECONDARY Z-DEPTH (Z: +70px)
+          </div>
+
+          <div class="readout-row" style="margin-bottom: 0.6rem;">
+            <span class="readout-label">Orbital Guardian</span>
+            <span class="readout-val" style="color:var(--gold);">Leon (Active)</span>
+          </div>
+
+          <div class="readout-row" style="margin-bottom: 1.2rem;">
+            <span class="readout-label">Interception Velocity</span>
+            <span class="readout-val" style="color:#ffffff;">c (Light-Speed)</span>
+          </div>
+
+          <a href="/index.html" class="btn-portal-jump" id="btnJumpHomeHub">
+            <span>✨</span> Access Main Earth Command Hub ➔
+          </a>
+        </section>
+
+        <!-- ===================================================================
+             PANEL 3: FLIGHT VELOCITY & LIFE SUPPORT (Z-Axis: +45px)
+             =================================================================== -->
+        <section class="floating-panel panel-life-support float-phase-3" aria-label="Flight Velocity and Life Support Telemetry">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:#00f0ff; letter-spacing:0.08em; margin-bottom:0.8rem; font-weight:700;">
+            🛰️ LIFE SUPPORT & ORBITAL KINETICS
+          </div>
+
+          <div class="readout-row">
+            <span class="readout-label">Orbital Velocity</span>
+            <span class="readout-val">28,000 km/h</span>
+          </div>
+          <div class="readout-row">
+            <span class="readout-label">Atmospheric Seal</span>
+            <span class="readout-val">94% Nominal</span>
+          </div>
+          <div class="readout-row">
+            <span class="readout-label">Kinetic Shield</span>
+            <span class="readout-val" style="color:#10b981;">144.9 GHz Active</span>
+          </div>
+          <div class="readout-row">
+            <span class="readout-label">Anti-Gravity Stabilizer</span>
+            <span class="readout-val">100% Weightless</span>
+          </div>
+
+          <div class="metric-bar-wrap">
+            <div class="metric-bar-bg">
+              <div class="metric-bar-fill" style="width: 94%;"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================================================================
+             PANEL 4: QUANTUM GPS RADAR & RETICLE (Z-Axis: +35px)
+             =================================================================== -->
+        <section class="floating-panel panel-gps-radar float-phase-4" aria-label="Quantum GPS Radar">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:#00f0ff; letter-spacing:0.08em; margin-bottom:0.6rem; font-weight:700;">
+            📡 QUANTUM GPS RADAR
+          </div>
+
+          <!-- Radar Visual with Sweep Beam & Blips -->
+          <div class="radar-hologram-visual">
+            <div class="radar-circle-ring ring-outer"></div>
+            <div class="radar-circle-ring ring-inner"></div>
+            <div class="radar-sweep-line"></div>
+            <div class="radar-target-blip"></div>
+          </div>
+
+          <div class="readout-row">
+            <span class="readout-label">Lat Target</span>
+            <span class="readout-val" id="dashLat">Acquiring...</span>
+          </div>
+          <div class="readout-row">
+            <span class="readout-label">Lon Target</span>
+            <span class="readout-val" id="dashLon">Acquiring...</span>
+          </div>
+        </section>
+
+        <!-- ===================================================================
+             PANEL 5: ENCRYPTED LEON UPLINK (Z-Axis: +55px)
+             =================================================================== -->
+        <section class="floating-panel panel-leon-comm float-phase-2" aria-label="Direct Encrypted Comm Link to Leon">
+          <div class="comm-header">
+            <div class="comm-avatar">
+              <img src="/assets/images/leon_portrait.jpg" alt="Leon Arch-Sentinel">
+            </div>
+            <div>
+              <div style="font-weight:700; font-size:0.85rem; color:#ffffff;">
+                Leon Uplink <span style="color:var(--gold); font-size:0.7rem;">🔒 256-BIT</span>
+              </div>
+              <div style="font-size:0.68rem; color:#ff99c8; font-family:'JetBrains Mono',monospace;">
+                QUANTUM HOLOGRAM CHANNEL
+              </div>
+            </div>
+          </div>
+
+          <div class="comm-transcript-box" id="commTranscriptBox">
+            <!-- Messages dynamically populated by dashboard.js -->
+          </div>
+
+          <div class="comm-input-bar">
+            <input type="text" id="commInput" placeholder="Send emergency transmission..." autocomplete="off">
+            <button id="commSendBtn" title="Transmit Encrypted Message">➔</button>
+          </div>
+        </section>
+
+        <!-- ===================================================================
+             PANEL 6: SYSTEM HAZARD & CORE TELEMETRY (Z-Axis: +25px)
+             =================================================================== -->
+        <section class="floating-panel panel-core-telemetry float-phase-3" aria-label="Core Telemetry Diagnostics">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:#94a3b8; letter-spacing:0.08em; margin-bottom:0.6rem; font-weight:700;">
+            ⚙️ CORE DIAGNOSTICS
+          </div>
+
+          <div class="readout-row">
+            <span class="readout-label">Quantum Flux</span>
+            <span class="readout-val" style="color:#a78bfa;">0.04 ms</span>
+          </div>
+          <div class="readout-row">
+            <span class="readout-label">Seismic Wave</span>
+            <span class="readout-val" style="color:#34d399;">Quiet</span>
+          </div>
+          <div class="readout-row">
+            <span class="readout-label">Metahuman Alert</span>
+            <span class="readout-val" style="color:#fbbf24;">Level 1</span>
+          </div>
+          <div class="readout-row">
+            <span class="readout-label">Z-Buffer Scale</span>
+            <span class="readout-val" style="color:#38bdf8;">1400px</span>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- =======================================================================
+       8K UNREAL ENGINE 5 CONCEPT RENDER DOSSIER MODAL
+       ======================================================================= -->
+  <div class="dossier-modal-overlay" id="dossierModalOverlay" role="dialog" aria-modal="true" aria-labelledby="dossierTitle">
+    <div class="dossier-card">
+      <div class="dossier-header">
+        <h3 id="dossierTitle">
+          <span>🎨</span> 8K Unreal Engine 5 Concept Render & Architecture Dossier
+        </h3>
+        <button class="btn-dossier-close" id="btnCloseDossier" aria-label="Close Dossier Modal">✕</button>
+      </div>
+
+      <!-- High-Resolution Render Display with Interactive Hotspots -->
+      <div class="dossier-image-viewport">
+        <img src="/assets/images/scifi_emergency_dashboard.jpg" alt="Unreal Engine 5 Render - Futuristic Sci-Fi Anti-Gravity Emergency Dashboard">
+
+        <!-- Interactive Hotspot Pins -->
+        <div class="render-hotspot" style="top: 42%; left: 45%;" title="Holographic 'Emergency SOS' Panel (Primary Z-Depth)">
+          1
+        </div>
+        <div class="render-hotspot" style="top: 58%; left: 66%;" title="Holographic 'Home Hub' Panel (Secondary Z-Depth)">
+          2
+        </div>
+        <div class="render-hotspot" style="top: 24%; left: 68%;" title="Flight Velocity & Life Support Telemetry">
+          3
+        </div>
+        <div class="render-hotspot" style="top: 18%; left: 47%;" title="Orbital Navigation & Quantum GPS Radar">
+          4
+        </div>
+        <div class="render-hotspot" style="top: 72%; left: 48%;" title="Upward Anti-Gravity Neon Particle Field">
+          5
+        </div>
+      </div>
+
+      <!-- Architectural Design Notes -->
+      <div class="dossier-notes-grid">
+        <div class="dossier-note-card">
+          <h4>1. Weightless Floating Glassmorphism</h4>
+          <p>
+            Disconnected multi-plane glassmorphism panels hover suspended in zero-gravity space with frosted translucency, edge luminescence, and soft glowing drop shadows.
+          </p>
+        </div>
+        <div class="dossier-note-card">
+          <h4>2. Holographic 3D Typography on Z-Axes</h4>
+          <p>
+            "Emergency SOS" and "Home Hub" are rendered with multi-layered neon extrusion text shadows, hovering on separate Z-depth planes above their respective frosted glass slabs.
+          </p>
+        </div>
+        <div class="dossier-note-card">
+          <h4>3. Upward Neon Particle Physics</h4>
+          <p>
+            Defying planetary gravity, glowing cyan, magenta, and golden energy particles stream upward from the cosmic void, visually signaling an active anti-gravity field.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Global Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-crest">🛡️ 🛰️ ⚔️</div>
+      <div class="footer-quote">
+        "Weightless in space, unwavering on Earth. Quantum protection beyond gravity."
+      </div>
+      <div class="footer-meta">
+        © 2026 Leon Arch-Sentinel Public Defense Command. Anti-Gravity Orbital Sector 01.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/config.js"></script>
+  <script src="/js/shared.js"></script>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>
